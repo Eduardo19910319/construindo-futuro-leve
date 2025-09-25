@@ -32,8 +32,6 @@ const About = () => {
   const stats = [
     { number: "85%", label: "Menos Resíduos" },
     { number: "3x", label: "Mais Rápido" },
-    { number: "15+", label: "Anos de Experiência" },
-    { number: "500+", label: "Famílias Atendidas" }
   ];
 
   return (

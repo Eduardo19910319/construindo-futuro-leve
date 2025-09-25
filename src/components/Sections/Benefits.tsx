@@ -5,7 +5,7 @@ const Benefits = () => {
     {
       icon: Clock,
       title: "Construção Acelerada",
-      description: "Métodos otimizados que reduzem o tempo de obra em até 40%, entregando seu projeto mais rapidamente.",
+      description: "Métodos otimizados que reduzem o tempo de obra em até 3x, entregando seu projeto mais rapidamente.",
       color: "text-brand-blue"
     },
     {
