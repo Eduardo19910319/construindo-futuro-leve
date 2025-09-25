@@ -324,9 +324,9 @@ const Method = () => {
                   Agendar Visita Técnica
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
-                <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-brand-navy">
-                  Baixar Material Técnico
-                </Button>
+                <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/20">
+  Baixar Material Técnico
+</Button>
               </div>
             </div>
           </div>

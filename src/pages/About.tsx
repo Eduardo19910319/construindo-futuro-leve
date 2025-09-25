@@ -159,9 +159,9 @@ const About = () => {
                 <Button variant="secondary" size="lg">
                   Solicitar Orçamento Grátis
                 </Button>
-                <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-brand-navy">
-                  Ver Projetos Realizados
-                </Button>
+                <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/20">
+  Ver Projetos Realizados
+</Button>
               </div>
             </div>
           </div>

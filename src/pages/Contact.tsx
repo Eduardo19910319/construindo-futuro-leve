@@ -139,10 +139,10 @@ const Contact = () => {
                   <Phone className="mr-2 h-5 w-5" />
                   Ligar Agora
                 </Button>
-                <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-brand-navy">
-                  <MessageCircle className="mr-2 h-5 w-5" />
-                  WhatsApp
-                </Button>
+                <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/20">
+  <MessageCircle className="mr-2 h-5 w-5" />
+  WhatsApp
+</Button>
               </div>
             </div>
           </div>
