@@ -77,7 +77,7 @@ const Method = () => {
   ];
 
   const features = [
-    "Estrutura em Steel Frame ou Wood Frame",
+    "Estruturas pré-fabricadas de concreto",
     "Isolamento térmico e acústico avançado",
     "Instalações integradas na estrutura",
     "Revestimentos de alta qualidade",

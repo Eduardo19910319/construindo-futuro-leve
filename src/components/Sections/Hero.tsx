@@ -4,8 +4,8 @@ import heroImage from '@/assets/hero-construction.jpg';
 
 const Hero = () => {
   const benefits = [
-    "Construção 40% mais rápida",
-    "Economia de até 30% em custos",
+    "Construção 3x mais rápida que alvenaria",
+    "Economia de até 30% em custos totais na obra",
     "Tecnologia sustentável",
     "Garantia de qualidade"
   ];
