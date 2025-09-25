@@ -60,17 +60,6 @@ const Hero = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/20 to-transparent"></div>
             </div>
-            
-            {/* Floating Stats */}
-            <div className="absolute -bottom-6 -left-6 bg-white rounded-xl p-6 shadow-brand">
-              <div className="text-3xl font-bold text-brand-blue">500+</div>
-              <div className="text-sm text-gray-600">Obras Concluídas</div>
-            </div>
-            
-            <div className="absolute -top-6 -right-6 bg-white rounded-xl p-6 shadow-brand">
-              <div className="text-3xl font-bold text-brand-teal">15+</div>
-              <div className="text-sm text-gray-600">Anos de Experiência</div>
-            </div>
           </div>
         </div>
       </div>
