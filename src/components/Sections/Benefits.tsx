@@ -16,8 +16,8 @@ const Benefits = () => {
     },
     {
       icon: Leaf,
-      title: "Sustentabilidade",
-      description: "Construções eco-friendly com materiais sustentáveis e menor impacto ambiental.",
+      title: "Eficiência Energética",
+      description: "Sua casa mais fresca no verão e aconchegante no inverno, refletindo em uma conta de luz mais baixa o ano todo.",
       color: "text-green-600"
     },
     {
@@ -83,20 +83,20 @@ const Benefits = () => {
         <div className="mt-20 bg-gradient-brand rounded-2xl p-8 md:p-12 text-white">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
-              <div className="text-3xl md:text-4xl font-bold mb-2">500+</div>
+              <div className="text-3xl md:text-4xl font-bold mb-2">50+</div>
               <div className="text-white/80">Obras Concluídas</div>
             </div>
             <div>
-              <div className="text-3xl md:text-4xl font-bold mb-2">15+</div>
+              <div className="text-3xl md:text-4xl font-bold mb-2">8+</div>
               <div className="text-white/80">Anos de Experiência</div>
             </div>
             <div>
-              <div className="text-3xl md:text-4xl font-bold mb-2">98%</div>
-              <div className="text-white/80">Clientes Satisfeitos</div>
+              <div className="text-3xl md:text-4xl font-bold mb-2">3x</div>
+              <div className="text-white/80">Mais Rápido</div>
             </div>
             <div>
-              <div className="text-3xl md:text-4xl font-bold mb-2">30%</div>
-              <div className="text-white/80">Economia Média</div>
+              <div className="text-3xl md:text-4xl font-bold mb-2">85%</div>
+              <div className="text-white/80">Menos Resíduos</div>
             </div>
           </div>
         </div>

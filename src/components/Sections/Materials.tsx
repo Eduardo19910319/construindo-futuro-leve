@@ -20,9 +20,9 @@ const Materials = () => {
       features: ["Economia energética", "Conforto térmico", "Eco-friendly"]
     },
     {
-      name: "Sistemas Integrados",
-      description: "Soluções completas que integram estrutura, vedação e instalações.",
-      features: ["Otimização total", "Redução de interferências", "Facilidade de manutenção"]
+      name: "Zero Quebra-Quebra",
+      description: "Fim do quebra-quebra: Nossas paredes já vêm prontas para receber as instalações elétricas e hidráulicas. Zero poeira, zero entulho e semanas de avanço no seu cronograma.",
+      features: ["Instalação em 2h vs 2 dias", "Zero poeira e entulho", "Cronograma acelerado"]
     }
   ];
 
@@ -88,7 +88,7 @@ const Materials = () => {
               <div className="flex items-center space-x-2">
                 <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                 <span className="text-sm font-medium text-brand-navy">
-                  Certificação ISO 9001
+                  Qualidade Garantida
                 </span>
               </div>
             </div>
