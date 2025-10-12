@@ -1,9 +1,19 @@
+// Caminho: src/pages/Method.tsx
+
 import Header from '@/components/Layout/Header';
 import Footer from '@/components/Layout/Footer';
 import WhatsappButton from '@/components/WhatsappButton';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { 
+  Dialog, 
+  DialogContent, 
+  DialogHeader, 
+  DialogTitle, 
+  DialogTrigger 
+} from '@/components/ui/dialog';
+import { ContactForm } from '@/components/ContactForm';
 import { 
   Clock, 
   Leaf, 
@@ -14,7 +24,8 @@ import {
   Home,
   Wrench,
   Users,
-  FileCheck
+  FileCheck,
+  MessageCircle
 } from 'lucide-react';
 
 const Method = () => {
@@ -119,12 +130,19 @@ const Method = () => {
       advantage: "Baixo custo"
     }
   ];
+  
+  const handleWhatsAppClick = () => {
+    const phoneNumber = "5511999999999"; // Substitua pelo número de WhatsApp correto
+    const message = "Olá! Vim pela página 'Método' e gostaria de tirar umas dúvidas.";
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
+  };
 
   return (
     <div className="min-h-screen">
       <Header />
       <main>
-        {/* Hero Section */}
+        {/* Seção Hero */}
         <section className="bg-gradient-brand text-white py-20">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
@@ -138,14 +156,16 @@ const Method = () => {
                 Conheça o sistema construtivo inteligente que está revolucionando 
                 a forma de construir no Brasil
               </p>
-              <Button variant="secondary" size="lg">
-                Solicitar Apresentação Técnica
-              </Button>
+              <a href="/apresentacao-comercial.pdf" target="_blank" rel="noopener noreferrer">
+                <Button variant="secondary" size="lg">
+                  Baixar Apresentação Comercial
+                </Button>
+              </a>
             </div>
           </div>
         </section>
 
-        {/* Main Advantages */}
+        {/* Vantagens Principais */}
         <section className="py-20">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
@@ -182,7 +202,7 @@ const Method = () => {
           </div>
         </section>
 
-        {/* Process Steps */}
+        {/* Etapas do Processo */}
         <section className="py-20 bg-gray-50">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
@@ -230,7 +250,7 @@ const Method = () => {
           </div>
         </section>
 
-        {/* Technical Features */}
+        {/* Características Técnicas */}
         <section className="py-20">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
@@ -255,7 +275,7 @@ const Method = () => {
           </div>
         </section>
 
-        {/* Comparison Table */}
+        {/* Tabela Comparativa */}
         <section className="py-20 bg-gray-50">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
@@ -308,7 +328,7 @@ const Method = () => {
           </div>
         </section>
 
-        {/* CTA Section */}
+        {/* Seção CTA Final */}
         <section className="py-20 bg-gradient-brand text-white">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
@@ -320,13 +340,31 @@ const Method = () => {
                 que está transformando o futuro da construção civil.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button variant="secondary" size="lg" className="group">
-                  Agendar Visita Técnica
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button variant="secondary" size="lg" className="group">
+                      Agendar Visita Técnica
+                      <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="sm:max-w-[600px]">
+                    <DialogHeader>
+                      <DialogTitle className="text-2xl font-bold text-brand-navy">Agende sua Visita Técnica</DialogTitle>
+                    </DialogHeader>
+                    <div className="py-4">
+                      <ContactForm />
+                    </div>
+                  </DialogContent>
+                </Dialog>
+
+                <Button 
+                  variant="outline-inverse" 
+                  size="lg"
+                  onClick={handleWhatsAppClick}
+                >
+                  <MessageCircle className="mr-2 h-5 w-5" />
+                  Contato via WhatsApp
                 </Button>
-                <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/20">
-  Baixar Material Técnico
-</Button>
               </div>
             </div>
           </div>

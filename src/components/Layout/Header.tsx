@@ -1,7 +1,18 @@
+// Caminho do arquivo: src/components/Layout/Header.tsx
+
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
+import ecofitLogo from '@/assets/logo_site_01.svg';
+import { 
+  Dialog, 
+  DialogContent, 
+  DialogHeader, 
+  DialogTitle, 
+  DialogTrigger 
+} from '@/components/ui/dialog';
+import { ContactForm } from '@/components/ContactForm';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -20,16 +31,11 @@ const Header = () => {
     <header className="bg-white shadow-soft sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-8 bg-gradient-brand rounded-sm flex items-center justify-center">
-              <div className="w-6 h-5 bg-white rounded-sm relative">
-                <div className="absolute -top-1 -right-1 w-4 h-4 bg-brand-teal rounded-full opacity-80"></div>
-              </div>
-            </div>
-            <span className="text-xl font-bold text-brand-navy">ecofit</span>
+          <Link to="/">
+            <img src={ecofitLogo} alt="EcoFit Logo" className="h-10" />
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* Navegação Desktop */}
           <nav className="hidden md:flex items-center space-x-8">
             {navigation.map((item) => (
               <Link
@@ -42,12 +48,28 @@ const Header = () => {
                 {item.name}
               </Link>
             ))}
-            <Button variant="cta" size="sm">
-              Orçamento Grátis
-            </Button>
+            
+            {/* INÍCIO DA MÁGICA DO MODAL */}
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button variant="cta" size="sm">
+                  Orçamento Grátis
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[600px]">
+                <DialogHeader>
+                  <DialogTitle className="text-2xl font-bold text-brand-navy">Solicite seu Orçamento</DialogTitle>
+                </DialogHeader>
+                <div className="py-4">
+                  <ContactForm />
+                </div>
+              </DialogContent>
+            </Dialog>
+            {/* FIM DA MÁGICA DO MODAL */}
+
           </nav>
 
-          {/* Mobile menu button */}
+          {/* Botão do Menu Mobile */}
           <Button
             variant="ghost"
             size="icon"
@@ -58,7 +80,7 @@ const Header = () => {
           </Button>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Navegação Mobile */}
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-gray-100">
             <nav className="flex flex-col space-y-4">
@@ -74,9 +96,21 @@ const Header = () => {
                   {item.name}
                 </Link>
               ))}
-              <Button variant="cta" size="sm" className="w-fit">
-                Orçamento Grátis
-              </Button>
+              <Dialog onOpenChange={(open) => !open && setIsMenuOpen(false)}>
+                <DialogTrigger asChild>
+                  <Button variant="cta" size="sm" className="w-fit">
+                    Orçamento Grátis
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[600px]">
+                  <DialogHeader>
+                    <DialogTitle className="text-2xl font-bold text-brand-navy">Solicite seu Orçamento</DialogTitle>
+                  </DialogHeader>
+                  <div className="py-4">
+                    <ContactForm />
+                  </div>
+                </DialogContent>
+              </Dialog>
             </nav>
           </div>
         )}

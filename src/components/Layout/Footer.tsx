@@ -1,21 +1,25 @@
+// Caminho: src/components/Layout/Footer.tsx
+
 import { Link } from 'react-router-dom';
 import { MapPin, Phone, Mail } from 'lucide-react';
+// IMPORTANDO A LOGO CORRETA PARA O FOOTER
+import ecofitFooterLogo from '@/assets/logo_ecofit_footer.svg'; 
 
 const Footer = () => {
   return (
     <footer className="bg-brand-navy text-white">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Company Info */}
+          {/* Informações da Empresa */}
           <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-8 bg-gradient-brand rounded-sm flex items-center justify-center">
-                <div className="w-6 h-5 bg-white rounded-sm relative">
-                  <div className="absolute -top-1 -right-1 w-4 h-4 bg-brand-teal rounded-full opacity-80"></div>
-                </div>
-              </div>
-              <span className="text-xl font-bold">ecofit</span>
+
+            {/* LOGO ANTIGA SUBSTITUÍDA PELA NOVA IMAGEM */}
+            <div className="mb-4">
+              <Link to="/">
+                <img src={ecofitFooterLogo} alt="EcoFit Logo" className="h-16" />
+              </Link>
             </div>
+
             <p className="text-gray-300 mb-6 max-w-md">
               Construções inteligentes com foco em sustentabilidade e inovação. 
               Transformamos ideias em realidade com métodos construtivos modernos.
@@ -39,7 +43,7 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Navigation Links */}
+          {/* Links de Navegação */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Navegação</h3>
             <ul className="space-y-2">
@@ -86,7 +90,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-700 mt-8 pt-8 text-center">
           <p className="text-gray-300 text-sm">
-            © 2024 EcoFit Construções Inteligentes. Todos os direitos reservados.
+            © 2025 EcoFit Construções Inteligentes. Todos os direitos reservados.
           </p>
         </div>
       </div>

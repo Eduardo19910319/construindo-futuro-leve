@@ -1,9 +1,13 @@
+// Caminho: src/pages/About.tsx
+
 import Header from '@/components/Layout/Header';
 import Footer from '@/components/Layout/Footer';
 import WhatsappButton from '@/components/WhatsappButton';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { CheckCircle, Users, Award, Leaf } from 'lucide-react';
+import { CheckCircle, Users, Award, Leaf, MessageCircle } from 'lucide-react';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { ContactForm } from '@/components/ContactForm';
 
 const About = () => {
   const values = [
@@ -35,12 +39,18 @@ const About = () => {
     { number: "100%", label: "Previsibilidade no Orçamento" },
     { number: "Até 20%", label: "Mais Eficiência Energética" }
   ];
+  
+  const handleWhatsAppClick = () => {
+    const phoneNumber = "5511999999999"; // Substitua pelo número de WhatsApp correto
+    const message = "Olá! Vim pela página 'Quem Somos' e gostaria de tirar umas dúvidas.";
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank');
+  };
 
   return (
     <div className="min-h-screen">
       <Header />
       <main>
-        {/* Hero Section */}
         <section className="bg-gradient-brand text-white py-20">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
@@ -62,7 +72,6 @@ const About = () => {
           </div>
         </section>
 
-        {/* Our Story */}
         <section className="py-20 bg-gray-50">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
@@ -111,7 +120,6 @@ const About = () => {
           </div>
         </section>
 
-        {/* Our Values */}
         <section className="py-20">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
@@ -145,7 +153,6 @@ const About = () => {
           </div>
         </section>
 
-        {/* CTA Section */}
         <section className="py-20 bg-gradient-brand text-white">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
@@ -156,12 +163,25 @@ const About = () => {
                 Faça parte da revolução na construção civil. Solicite seu orçamento personalizado hoje mesmo.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button variant="secondary" size="lg">
-                  Solicitar Orçamento Grátis
+                <Dialog>
+                    <DialogTrigger asChild>
+                        <Button variant="secondary" size="lg">
+                            Solicitar Orçamento Grátis
+                        </Button>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-[600px]">
+                        <DialogHeader>
+                            <DialogTitle className="text-2xl font-bold text-brand-navy">Solicite seu Orçamento</DialogTitle>
+                        </DialogHeader>
+                        <div className="py-4">
+                            <ContactForm />
+                        </div>
+                    </DialogContent>
+                </Dialog>
+                <Button variant="outline-inverse" size="lg" onClick={handleWhatsAppClick}>
+                    <MessageCircle className="mr-2 h-5 w-5" />
+                    Falar no WhatsApp
                 </Button>
-                <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/20">
-  Ver Projetos Realizados
-</Button>
               </div>
             </div>
           </div>

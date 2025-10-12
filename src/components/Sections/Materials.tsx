@@ -1,3 +1,6 @@
+// Caminho: src/components/Sections/Materials.tsx
+
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { CheckCircle } from 'lucide-react';
 import materialsImage from '@/assets/materials-showcase.jpg';
@@ -30,7 +33,7 @@ const Materials = () => {
     <section className="py-20 bg-brand-light">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Left Content */}
+          {/* Conteúdo da Esquerda */}
           <div>
             <div className="inline-block bg-brand-blue/10 text-brand-blue px-4 py-2 rounded-full text-sm font-medium mb-6">
               🔧 Materiais Premium
@@ -67,13 +70,15 @@ const Materials = () => {
             </div>
 
             <div className="mt-8">
-              <Button variant="cta" size="lg">
-                Saiba Mais Sobre Nossos Materiais
-              </Button>
+              <Link to="/metodo">
+                <Button variant="cta" size="lg">
+                  Saiba Mais Sobre Nossos Materiais
+                </Button>
+              </Link>
             </div>
           </div>
 
-          {/* Right Image */}
+          {/* Imagem da Direita */}
           <div className="relative">
             <div className="rounded-2xl overflow-hidden shadow-brand">
               <img
@@ -83,7 +88,6 @@ const Materials = () => {
               />
             </div>
             
-            {/* Quality Badge */}
             <div className="absolute top-6 left-6 bg-white rounded-xl p-4 shadow-soft">
               <div className="flex items-center space-x-2">
                 <div className="w-3 h-3 bg-green-500 rounded-full"></div>
@@ -93,7 +97,6 @@ const Materials = () => {
               </div>
             </div>
 
-            {/* Innovation Badge */}
             <div className="absolute bottom-6 right-6 bg-gradient-brand text-white rounded-xl p-4">
               <div className="text-2xl font-bold">100%</div>
               <div className="text-sm opacity-90">Inovação</div>

@@ -1,6 +1,17 @@
+// Caminho: src/components/Sections/Hero.tsx
+
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { CheckCircle } from 'lucide-react';
 import heroImage from '@/assets/hero-construction.jpg';
+import { 
+  Dialog, 
+  DialogContent, 
+  DialogHeader, 
+  DialogTitle, 
+  DialogTrigger 
+} from '@/components/ui/dialog';
+import { ContactForm } from '@/components/ContactForm';
 
 const Hero = () => {
   const benefits = [
@@ -14,7 +25,7 @@ const Hero = () => {
     <section className="relative min-h-screen flex items-center bg-gradient-subtle overflow-hidden">
       <div className="container mx-auto px-4 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
+          {/* Conteúdo da Esquerda */}
           <div className="animate-slide-up">
             <div className="inline-block bg-brand-blue/10 text-brand-blue px-4 py-2 rounded-full text-sm font-medium mb-6">
               🏗️ Construções Inteligentes
@@ -29,7 +40,6 @@ const Hero = () => {
               Mais rapidez, economia e sustentabilidade em cada projeto.
             </p>
 
-            {/* Benefits List */}
             <div className="grid grid-cols-2 gap-4 mb-8">
               {benefits.map((benefit, index) => (
                 <div key={index} className="flex items-center space-x-2">
@@ -39,18 +49,33 @@ const Hero = () => {
               ))}
             </div>
 
-            {/* CTA Buttons */}
+            {/* BOTÕES DE AÇÃO (CTAs) ATUALIZADOS */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="hero" size="lg" className="text-lg px-8 py-6">
-                Solicitar Orçamento
-              </Button>
-              <Button variant="outline" size="lg" className="text-lg px-8 py-6">
-                Conheça o Método
-              </Button>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button variant="hero" size="lg" className="text-lg px-8 py-6">
+                    Solicitar Orçamento
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[600px]">
+                  <DialogHeader>
+                    <DialogTitle className="text-2xl font-bold text-brand-navy">Solicite seu Orçamento</DialogTitle>
+                  </DialogHeader>
+                  <div className="py-4">
+                    <ContactForm />
+                  </div>
+                </DialogContent>
+              </Dialog>
+
+              <Link to="/metodo">
+                <Button variant="outline" size="lg" className="text-lg px-8 py-6">
+                  Conheça o Método
+                </Button>
+              </Link>
             </div>
           </div>
 
-          {/* Right Image */}
+          {/* Imagem da Direita */}
           <div className="relative animate-fade-in">
             <div className="relative rounded-2xl overflow-hidden shadow-brand">
               <img
@@ -63,10 +88,6 @@ const Hero = () => {
           </div>
         </div>
       </div>
-
-      {/* Background Elements */}
-      <div className="absolute top-20 right-20 w-32 h-32 bg-brand-blue/5 rounded-full blur-xl"></div>
-      <div className="absolute bottom-20 left-20 w-40 h-40 bg-brand-teal/5 rounded-full blur-xl"></div>
     </section>
   );
 };
