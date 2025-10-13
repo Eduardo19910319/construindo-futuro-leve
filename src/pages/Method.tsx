@@ -132,7 +132,7 @@ const Method = () => {
   ];
   
   const handleWhatsAppClick = () => {
-    const phoneNumber = "5511999999999"; // Substitua pelo número de WhatsApp correto
+    const phoneNumber = "551935049400"; // Substitua pelo número de WhatsApp correto
     const message = "Olá! Vim pela página 'Método' e gostaria de tirar umas dúvidas.";
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');

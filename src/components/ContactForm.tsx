@@ -1,38 +1,27 @@
-// Caminho do arquivo: src/components/ContactForm.tsx
+// Caminho: src/components/ContactForm.tsx
 
-import { useState } from 'react';
-import { useToast } from '@/hooks/use-toast';
+import React from 'react';
+import { useForm, ValidationError } from '@formspree/react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Send } from 'lucide-react';
+import { Send, CheckCircle } from 'lucide-react';
 
 export const ContactForm = () => {
-  const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    service: '',
-    budget: '',
-    message: ''
-  });
+  // AQUI É A CONEXÃO COM O FORMSPREE. COLE SEU ID ABAIXO.
+  const [state, handleSubmit] = useForm("mzzjkdyj"); 
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Formulário enviado com os dados:', formData);
-    toast({
-      title: "Mensagem enviada com sucesso!",
-      description: "Entraremos em contato em até 24 horas.",
-    });
-    setFormData({ name: '', email: '', phone: '', service: '', budget: '', message: '' });
-  };
-
-  const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
-  };
+  if (state.succeeded) {
+    return (
+      <div className="flex flex-col items-center justify-center text-center py-10">
+        <CheckCircle className="h-12 w-12 text-green-500" />
+        <h3 className="mt-4 text-xl font-bold text-brand-navy">Obrigado!</h3>
+        <p className="mt-2 text-gray-600">Sua mensagem foi enviada. Entraremos em contato em breve.</p>
+      </div>
+    );
+  }
 
   const services = [
     "Construção Residencial",
@@ -55,48 +44,41 @@ export const ContactForm = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <Label htmlFor="name">Nome Completo *</Label>
-          <Input id="name" type="text" value={formData.name} onChange={(e) => handleInputChange('name', e.target.value)} placeholder="Seu nome completo" required />
+          <Input id="name" type="text" name="name" placeholder="Seu nome completo" required />
+          <ValidationError prefix="Name" field="name" errors={state.errors} className="text-destructive text-sm mt-1" />
         </div>
         <div>
           <Label htmlFor="email">E-mail *</Label>
-          <Input id="email" type="email" value={formData.email} onChange={(e) => handleInputChange('email', e.target.value)} placeholder="seu@email.com" required />
+          <Input id="email" type="email" name="email" placeholder="seu@email.com" required />
+          <ValidationError prefix="Email" field="email" errors={state.errors} className="text-destructive text-sm mt-1" />
         </div>
       </div>
       <div className="grid md:grid-cols-2 gap-4">
         <div>
           <Label htmlFor="phone">Telefone/WhatsApp *</Label>
-          <Input id="phone" type="tel" value={formData.phone} onChange={(e) => handleInputChange('phone', e.target.value)} placeholder="(11) 99999-9999" required />
+          <Input id="phone" type="tel" name="phone" placeholder="(11) 99999-9999" required />
+          <ValidationError prefix="Phone" field="phone" errors={state.errors} className="text-destructive text-sm mt-1" />
         </div>
         <div>
           <Label>Serviço de Interesse</Label>
-          <Select value={formData.service} onValueChange={(value) => handleInputChange('service', value)}>
-            <SelectTrigger><SelectValue placeholder="Selecione um serviço" /></SelectTrigger>
-            <SelectContent>
-              {services.map((service) => <SelectItem key={service} value={service}>{service}</SelectItem>)}
-            </SelectContent>
-          </Select>
+          {/* Note: O Formspree não lida bem com a captura de dados de componentes Select complexos como o do shadcn.
+              Vamos deixar como um campo de texto por enquanto para garantir o envio. */}
+          <Input id="service" type="text" name="service" placeholder="Ex: Construção Residencial" />
         </div>
       </div>
       <div>
         <Label>Faixa de Investimento</Label>
-        <Select value={formData.budget} onValueChange={(value) => handleInputChange('budget', value)}>
-          <SelectTrigger><SelectValue placeholder="Selecione sua faixa de investimento" /></SelectTrigger>
-          <SelectContent>
-            {budgetRanges.map((range) => <SelectItem key={range} value={range}>{range}</SelectItem>)}
-          </SelectContent>
-        </Select>
+        <Input id="budget" type="text" name="budget" placeholder="Ex: Até R$ 200.000" />
       </div>
       <div>
         <Label htmlFor="message">Mensagem</Label>
-        <Textarea id="message" value={formData.message} onChange={(e) => handleInputChange('message', e.target.value)} placeholder="Conte-nos mais sobre seu projeto, terreno, prazos, etc." rows={4} />
+        <Textarea id="message" name="message" placeholder="Conte-nos mais sobre seu projeto, terreno, prazos, etc." rows={4} />
+        <ValidationError prefix="Message" field="message" errors={state.errors} className="text-destructive text-sm mt-1" />
       </div>
-      <Button type="submit" className="w-full" size="lg">
+      <Button type="submit" className="w-full" size="lg" disabled={state.submitting}>
         <Send className="mr-2 h-5 w-5" />
-        Enviar Solicitação
+        {state.submitting ? 'Enviando...' : 'Enviar Solicitação'}
       </Button>
-      <p className="text-sm text-gray-500 text-center">
-        Ao enviar, você concorda com nossa Política de Privacidade
-      </p>
     </form>
   );
 };

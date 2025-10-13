@@ -5,16 +5,16 @@ const Testimonials = () => {
   const testimonials = [
     {
       name: "Carlos Silva",
-      role: "Engenheiro Civil",
-      company: "Silva Construções",
+      role: "Proprietário",
+      company: "Residência Familiar",
       rating: 5,
       text: "A EcoFit revolucionou nossos projetos. A economia de tempo e recursos foi impressionante, e a qualidade final superou todas as expectativas.",
       image: testimonialImage
     },
     {
       name: "Maria Santos",
-      role: "Arquiteta",
-      company: "Santos Arquitetura",
+      role: "Proprietário",
+      company: "Residência Familiar",
       rating: 5,
       text: "Profissionais extremamente competentes e método inovador. Conseguimos entregar nossa obra 3 meses antes do prazo sem comprometer a qualidade.",
       image: testimonialImage

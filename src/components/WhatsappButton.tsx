@@ -1,8 +1,11 @@
+// Caminho: src/components/WhatsappButton.tsx
+
 import { MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const WhatsappButton = () => {
-  const phoneNumber = "5511999999999"; // Replace with actual WhatsApp number
+  // Removendo o 9 inicial e caracteres especiais para o link da API
+  const phoneNumber = "551935049400"; 
   const message = "Olá! Gostaria de saber mais sobre os serviços da EcoFit.";
   
   const handleWhatsAppClick = () => {
