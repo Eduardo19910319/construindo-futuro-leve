@@ -8,12 +8,23 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Send, CheckCircle } from 'lucide-react';
+import { sendAdConversionEvent } from '@/lib/ads';
 
 export const ContactForm = () => {
   // AQUI É A CONEXÃO COM O FORMSPREE. COLE SEU ID ABAIXO.
   const [state, handleSubmit] = useForm("mzzjkdyj"); 
 
   if (state.succeeded) {
+        // 💥 NOVO: DISPARO DA CONVERSÃO NO SUCESSO DO FORMULÁRIO
+    React.useEffect(() => {
+        // !!! SUBSTITUA 'CONVERSION_LABEL_AQUI' PELO SEU LABEL REAL DO GOOGLE ADS !!!
+        const CONVERSION_LABEL = 'Ug7PCl6htK0bEKCr2N5B';
+        const SEND_TO_ID = `AW-17646884256/${CONVERSION_LABEL}`;  
+        
+        // Dispara o evento de "Lead" com valor 0.00 BRL. Ajuste o valor/moeda se for uma venda.
+        sendAdConversionEvent(CONVERSION_LABEL, 0.00, 'BRL');
+    }, []);
+    // 💥 FIM DO DISPARO
     return (
       <div className="flex flex-col items-center justify-center text-center py-10">
         <CheckCircle className="h-12 w-12 text-green-500" />
